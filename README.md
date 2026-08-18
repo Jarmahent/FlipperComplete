@@ -46,6 +46,25 @@ npm run dev -- --host 0.0.0.0
 
 Frontend defaults to `http://localhost:8080` for API calls. Override with `VITE_API_BASE_URL` if needed.
 
+
+## What Changed During Merge
+
+This repo is more than a file move from the two prototypes. The initial merge also made light integration fixes so the frontend and backend are easier to run together for MVP work.
+
+- Created a unified repo structure with `frontend/` for Vue and `backend/` for FastAPI.
+- Added `frontend/src/api.js` so the frontend API base URL can be configured with `VITE_API_BASE_URL`.
+- Replaced hard-coded frontend API calls to `http://localhost:8080/...` with the shared API URL helper.
+- Fixed the listing platform typo/mismatch from `MAKRETPLACE` to `FACEBOOK`.
+- Stopped transforming listing platform values with `toUpperCase()` so submitted values stay aligned with supported backend values.
+- Added MVP default statuses in forms such as `PURCHASED`, `IN_BIN`, and `DRAFT`.
+- Fixed parts query URL building when filtering by `vehicle_id`.
+- Updated backend database setup so tables are created through `init_db()` at app startup.
+- Updated the FastAPI entrypoint so `app = init_app()` is available for `uvicorn api.main:app`.
+- Cleaned API metadata tag definitions for Swagger/OpenAPI grouping.
+- Added root-level run documentation and `.env.example` files for both frontend and backend.
+
+This was not a full production refactor. Dependency installation and full app runtime verification were intentionally deferred.
+
 ## MVP Notes
 
 The prototype currently treats fields ending in `_c` as dollar amounts in the UI/API. That should be normalized before production accounting work.
