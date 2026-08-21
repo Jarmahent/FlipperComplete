@@ -1,1 +1,14 @@
-.venv/n__pycache__/n*.pycnnode_modules/ndist/n.envn.env.*n!.env.examplen
+# Python
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+
+# Frontend
+node_modules/
+dist/
+
+# Environment files
+.env
+.env.*
+!.env.example
